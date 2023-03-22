@@ -1,0 +1,102 @@
+<h3>New in 0.6.4:</h3>
+<ul>
+    <li>Improved detection of numeric values for linear polynomials in interval-represented numbers.</li>
+    <li>Fixed some marginal cases in the sample construction in <code>CAD</code>.</li>
+    <li>Improvements in the elimination phase in <code>CAD</code>.</li>
+</ul>
+
+<h3>New in 0.6.3:</h3>
+<ul>
+    <li>Improvements in the <code>CAD</code> data structures.</li>
+    <li>Bugfixes in <code>RealAlgebraicNumberFactory</code> resolving some problems in the CAD sample construction.</li>
+</ul>
+
+<h3>New in 0.6.2:</h3>
+<ul>
+    <li>Improvements in <code>CAD::liftCheck</code> implementing several heuristics, e.g., preference of root/non-root samples.</li>
+    <li>Extended <code>CADSettings</code>.</li>
+    <li>Fixed some bugs in the lifting phase of <code>CAD</code>.</li>
+    <li>Bugfixes in <code>CAD::addPolynomial</code> and <code>CAD::eliminationSets</code>.</li>
+    <li>Improvements in <code>RationalUnivariatePolynomial::evaluateAt</code>.</li>
+    <li>Improvements in <code>RealAlgebraicNumberFactory</code> and <code>CAD::samples</code> resulting in a better detection and choice of numeric sample points.</li>
+    <li>Revised CAD-related examples regarding the new heuristics.</li>
+</ul>
+
+<h3>New in 0.6.1:</h3>
+<ul>
+    <li>Fixed bug in <code>CAD::samples</code> which lead to incomplete sample construction in some cases.</li>
+    <li>Added further settings to <code>CADSettings</code>.</li>
+    <li>Improved evaluation of polynomials in a numeric value.</li>
+    <li>Added real root finding heuristics utilizing Newton's method for real root finding.
+</ul>
+
+<h3>New in 0.6.0:</h3>
+<ul>
+    <li>Important improvements to <code>RealAlgebraicNumberIR</code> and <code>RealAlgebraicNumberFactory</code>, in particular:</li>
+    <ul>
+        <li>Removed auxiliary data type <code>RealalgebraicUnivariatePolynomial</code> for the benefit of more sophisticated methods for the substitution of interval-represented numbers in coefficients of parameterized univariate polynomials in <code>RealAlgebraicNumberFactory</code>.</li>
+        <li>Re-implemented <code>RealAlgebraicNumberFactory::evaluateIR</code>.</li>
+        <li>Added method <code>RealAlgebraicNumberFactory::realRootsEval</code> for the computation of real roots of parameterized univariate polynomials.</li>
+        <li>Improvements to <code>OpenInterval::sample</code> improving <code>RealAlgebraicNumberIR::refine</code>. Now the sample search algorithm uses machine arithmetic in reasonable cases.</li>
+    </ul>
+    <li>Improvements to <code>CAD</code>, for example:</li>
+    <ul>
+        <li>Easy adjustable heuristics via the class <code>CADSettings</code>.</li>
+        <!--<li>Simplification of polynomials in elimination sets by Gr&ouml;bner bases.</li>-->
+        <li>Pruning of useless polynomials in elimination sets by real root counting.</li>
+    </ul>
+</ul>
+
+<h3>New in 0.5.1:</h3>
+<ul>
+    <li>Interface change in <code>Groebner</code>.</li>
+    <li>Small fixes.</li>
+</ul>
+<h3>New in 0.5.0:</h3>
+<ul>
+  <li> License changed from <a href=\"http://www.gnu.org/licenses/lgpl-3.0.html\">LGPLv3</a> to <a href=\"http://www.gnu.org/licenses/gpl-3.0.html\">GPLv3</a>.</li>
+  <li> Project moved to powerful build system <a href=\"http://www.cmake.org/\">CMake</a>.
+  <li> Class <code>CAD</code> providing basic functionality in order to compute a cylindrical algebraic decomposition (CAD).</li>
+  <ul>
+    <li> New data type for real roots abstracting also numeric roots: <code>RealAlgebraicNumber</code>.</li>
+    <li> More efficient implementation of the interval representation of real roots in <code>RealAlgebraicNumberIR</code>. </li>
+    <li> Data structure for real roots in multi dimensions: <code>RealAlgebraicPoint</code>.</li>
+    <li> Preliminary data structure for polynomials with real algebraic numbers in their coefficients.</li>
+  </ul>
+  <li> Computation of a Gr&ouml;bner basis by Buchberger&prime;s algorithm. </li>
+  <ul>
+    <li> New and very efficient design of the data types for multivariate polynomials. </li>
+    <li> Complete re-implementation of <code>MultivariatePolynomial</code> in an efficient monomial-based representation <code>MultivariatePolynomialMR</code>.</li>
+  </ul>
+  <li> Stand-alone implementation of resultant and subresultant computations.</li>
+  <li> Many bugs fixed.</li>
+</ul>
+
+<h3>New in 0.1.4:</h3>
+<ul>
+  <li> Added real roots computation feature to <code>ginacraconsole</code>.</li>
+  <li> Added readline support for <code>ginacraconsole</code>.</li>
+  <li> Several bugfixes and improvements in <code>MultivariatePolynomial</code>.</li>
+  <li> Added factory class for <code>MultivariatePolynomial</code> now containing all relevant methods generating <code>MultivariatePolynomial</code> objects.</li>
+  <li> Improvements to <code>IntervalRepresentationFactory</code>; in particular, stability and efficiency of real root isolation.</li>
+</ul>
+
+<h3>New in 0.1.3:</h3>
+<ul>
+  <li> Bugfixes and new test cases.</li>
+  <li> Added factory class for <code>IntervalRepresentation</code> now containing all relevant methods generating <code>IntervalRepresentation</code> objects.</li>
+  <li> Removed files <code>algorithms.h</code> and <code>algorithms.cpp</code> while moving their methods to other files.
+</ul>
+
+<h3>New in 0.1.2:</h3>
+<ul>
+  <li> Bugfixes and new test cases.</li>
+  <li> Added files <code>algorithms.h</code> and <code>algorithms.cpp</code> containing methods based on all GiNaCRA classes.</li>
+</ul>
+
+<h3>New in 0.1.1:</h3>
+<ul>
+  <li> Bugfixes and new test cases.</li>
+  <li> Added method to compute (common) real roots of a (set of) univariate polynomials.</li>
+</ul>
+

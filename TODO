@@ -1,0 +1,23 @@
+File: TODO - a top-level list
+
+Project name: GiNaCRA - GiNaC Real Algebra package
+Contact: Ulrich Loup <loup@cs.rwth-aachen.de>
+Project sourceforge page: http://ginacra.sourceforge.net/
+Development status: beta (testing + some features missing)
+
+* General tasks concerning the package
+ (1) ginacraconsole extension
+ (2) Speedup by implementing reasonable basic:: methods.
+ (3) Re-implement IntervalRepresentation using newer algorithm (current implementation slow!), e.g. following http://www.sciencedirect.com/science/article/pii/S0747717103000932..
+
+* Package extension
+Implementation of the Janet algorithm for solving algebraic equation systems.
+
+* Package extension
+Quantifier elimination for the existential theory of the reals.
+
+* Package extension
+Exact Nonlinear Optimization using sign representations.
+
+* Package extension
+Besides interval and numeric representation of a real algebraic number, a representation by radicals with respective mixed-representation equality operators.

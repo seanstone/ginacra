@@ -1,0 +1,1164 @@
+ChangeLog file.
+
+Project name: GiNaCRA - GiNaC Real Algebra package
+Contact: Ulrich Loup <loup@cs.rwth-aachen.de>
+Project sourceforge page: http://ginacra.sourceforge.net/
+Development status: beta (testing + features missing)
+
+2010-12-17: Ulrich Loup <loup@cs.rwth-aachen.de>
+  * Released 0.1.
+
+2010-12-23: Ulrich Loup <loup@cs.rwth-aachen.de>
+  * IntervalRepresentation.cpp: - Removed normalizeInterval calls from constructors without normalizeInterval.
+				- Renamed order() -> Order().
+				- Rewrote realRoots() to not make use of heap allocated IntervalRepresentations.
+				- Added commonRealRoots(), computing a list of common real roots of a list of rational univariate polynomials.
+  * constants.h: Added ex_is_lesseq_deg ordering.
+2010-12-24: Ulrich Loup <loup@cs.rwth-aachen.de>
+  * Changes in many files suggested by doxygen.
+  * OpenInterval.*: Added method for inclusion check of OpenIntervals.
+  * IntervalRepresentation_unittest.*: - Minor changes, tidying up code.
+				- 2 new test cases: commonRealRoots, refine.
+2010-12-25: Ulrich Loup <loup@cs.rwth-aachen.de>
+  * examples/: Added 5 examples.
+  * IntervalRepresentation.*: Rewrote arithmetic operations to not use heap allocated objects any more.
+  * OpenInterval.*: Rewrote arithmetic operations to not use heap allocated objects any more.
+  * Released 0.1.1.
+
+2011-01-02: Ulrich Loup <loup@cs.rwth-aachen.de>
+    * utilities.*: Added isolateByVariables, an algorithm isolating monomial part coupled with coefficient from an expression which is a term, generalizing monpart
+2011-01-04: Ulrich Loup <loup@cs.rwth-aachen.de>
+  * utilities_unittest.*: Added tests for isolating monomial and coefficient by variables.
+  * MultivariatePolynomial.*: Added support for accessing coefficients of specific monomials w.r.t. the given monomial ordering.
+  * constants.h: Structs implementing monomial orders on pairs of coefficients and monomials.
+2011-01-06: Ulrich Loup <loup@cs.rwth-aachen.de>
+  * utilities.*: Fixed isolateByVariables for coefficients.
+  * MultivariateCoefficient*: Fixed.
+  * MultivariateTerm*: Fixed.
+2011-01-07: Ulrich Loup <loup@cs.rwth-aachen.de>
+  * MultivariatePolynomial.h: Moved attributes to private.
+  * constants.h: Reimplemented monomial orders on pairs of coefficients and monomials by using templates.
+2011-01-14: Ulrich Loup <loup@cs.rwth-aachen.de>
+  * utilities_unittest.cpp: Enhanced implementation of testSearchForSecondInOrderedExPairs, but still undefined reference.
+  * MultivariatePolynomial.*: Added template-guided coeff method.
+  * MultivariatePolynomial_unittest.*: Added tests for lcoeff, lterm and coeff where the latter is not complete.
+2011-02-07: Ulrich Loup <loup@cs.rwth-aachen.de>
+  * MultivariatePolynomial.*,MultivariateTerm.*,MultivariateMonomial.*, operators.*, algorithms.*: Implemented respective data types based on template parameter indicating the monomial ordering.
+  * Multivariate*.cpp: Contents moved to end of rerspective header files because of template parameters. Actual files removed.
+  * MultivariatePolynomial_unittest.*: Instantiated template parameters with ex_is_lesseq_deggrlex.
+  * MultivariateTerm_unittest.cpp: Instantiated template parameters with ex_is_lesseq_deggrlex.
+  * src/Makefile.am: Removed rules for Multivariate*.cpp files.
+	* OpenInterval.*: Implemented method returning the intervals' midpoint.
+	* OpenInterval_unittest.*: Implemented method testing the intervals' midpoint.
+2011-02-13: Ulrich Loup <loup@cs.rwth-aachen.de>
+  * RationalUnivariatePolynomial.*, IntervalRepresentation.*: Added some TODO notes for improving real root isolation.
+2011-02-14: Ulrich Loup <loup@cs.rwth-aachen.de>
+  * configure.ac: - Decreased version of autotools to 2.63 in order to be compatible with OpenSuse 11.2.
+      - Decreased version of cppunit to 1.12.0 in order to be compatible with OpenSuse 11.2.
+2011-02-15: Ulrich Loup <loup@cs.rwth-aachen.de>
+  * IntervalRepresentation.*: - Added method approximateValue(), which returns a numeric value approximating the number. This implementation is preliminary and only returns the midpoint of the current isolating interval.
+    - Moved methods on real root isolation to algorithms.*.
+  * IntervalRepresentation_unittest.*: Moved tests on real root isolation to algorithms.*.
+  * algorithms.*: Added methods on real root isolation.
+  * algorithms_unittest.*: Added tests on real root isolation.
+  * examples/example_presentation.cpp: Added.
+  * examples/*.cpp: Changed usage of real root methods.
+  * Released 0.1.2.
+
+2011-02-16: Ulrich Loup <loup@cs.rwth-aachen.de>
+  * OpenInterval.*: Additional documentation on isLess and isGreater methods.
+2011-02-17: Ulrich Loup <loup@cs.rwth-aachen.de>
+  * IntervalRepresentation.*: Implemented method isLess and corresponding operators.
+  * IntervalRepresentation_unittest.*: Added tests on isLess and corresponding operators. Still needs surgery!!
+  * algorithms.*: Moved methods for reduction modulo special Groebner bases and normal forms to MultivariatePolynomial.
+  * algorithms_unittest.*: Moved tests on reduction modulo special Groebner bases and normal forms to MultivariatePolynomial_unittest.
+  * MultivariatePolynomial.*: Added methods for reduction modulo special Groebner bases and normal forms.
+  * MultivariatePolynomial_unittest.*: Added tests on reduction modulo special Groebner bases and normal forms.
+2011-02-18: Ulrich Loup <loup@cs.rwth-aachen.de>
+  * IntervalRepresentation.cpp: - Changed order of checks in normalizeInterval.
+      - Fixed bug in isLess().
+  * MultivariatePolynomial.h: - Fixed coeff().
+      - Made reduction method safer.
+  * utilities.*: Moved method defined by template to the header: searchForSecondInOrderedExPairs.
+2011-02-19: Ulrich Loup <loup@cs.rwth-aachen.de>
+  * MultivariatePolynomial_unittest.cpp: - Implemented tests on coeff method.
+2011-02-20: Ulrich Loup <loup@cs.rwth-aachen.de>
+  * operators.h: Added methods (template-defined) for operations on classes derived from ex.
+  * MultivariateMonomial.h,MultivariatePolynomial.h,MultivariateTerm.h: Removed arithmetic operators.
+2011-02-21: Ulrich Loup <loup@cs.rwth-aachen.de>
+  * IntervalRepresentation.*: - Added arithmetic operations.
+    - compare_same_type, is_equal_same_type revised.
+  * operators.h: - Removed methods for arithmetic operations on IntervalRepresentaions.
+    - Added << operator for RationalUnivariatePolynomial.
+  * operators.cpp: - Added << operator for RationalUnivariatePolynomial.
+    - Removed UnivariatePolynomial.h include since no type specialities are needed.
+  * IntervalRepresentation_unittest.cpp: - Reactivated some tests. Some errors remain unsolved, marked as "fails:".
+    - Removed one static_cast from RationalUnivariatePolynomial to ex.
+2011-02-22: Ulrich Loup <loup@cs.rwth-aachen.de>
+  * IntervalRepresentation_unittest.*: - Reordered tests testReduction and testNormalForm.
+    - Implemented Example 12.6 in testReduction and testNormalForm.
+    - Added tests for MonomialExs() and CoefficientExs().
+  * IntervalRepresentation.h: - Fixed reduction to now use the GiNaC::divide correctly.
+  * constants.h: - Added @return comment to ex_is_under_the_staircase.
+    - Fixed documentation for ex_is_lesseq_deg.
+    - Added symbol_is_less_lex.
+2011-02-24: Ulrich Loup <loup@cs.rwth-aachen.de>
+  * constants.h: ex_is_under_the_staircase modified to use maps from variables to degrees instead of single lists.
+2011-03-11: Ulrich Loup <loup@cs.rwth-aachen.de>
+  * constants.h: ex_is_under_the_staircase modified to use the corners of the staircase of a Groebner basis.
+  * MultivariatePolynomial.h: Reimplemented normalForm to not use checks against the corners of the staircase any more.
+  * MultivariatePolynomial_unittest.cpp: Adapted test for normalForm.
+2011-03-11: Ulrich Loup <loup@cs.rwth-aachen.de>
+  * algorithms.*: - Extended documentation of searchRealRoots.
+    - Added method countRealRoots, providing the number of roots in a specified interval w.r.t. a given Sturm sequence.
+  * RationalUnivariatePolynomial.*: - Added method lcoeff, returning the leading coefficient.
+    - Made method coeff not inline any more.
+    - Implemented the (upper) Cauchy bound method.
+  * algorithms_unittest.*: Added test for countRealRoots, which is disabled by now due to a bug.
+2011-04-08: joachim
+  * algorithms.*:
+  * IntervalRepresentationFactory.*:
+  * IntervalRepresentationFactory_unittest.*:
+2011-04-11: Ulrich Loup <loup@cs.rwth-aachen.de>
+  * operators.*: Removed << operators for [Rational]UnivariatePolynomial.
+  * UnivariatePolynomial.*: Added << operator.
+  * RationalUnivariatePolynomial.*: Added << operator.
+2011-04-12: Ulrich Loup <loup@cs.rwth-aachen.de>
+  * IntervalRepresentationFactory.cpp: Fixed choice of the left bound of the isolating interval in realRoots.
+  * UnivariatePolynomial.*: Added methods for coefficient access: [l,t,]coeff.
+  * UnivariatePolynomial_unittest.*: Added tests for [l,t,]coeff, sepapart and isConstant.
+  * RationalUnivariatePolynomial.*: Added method for trailing coefficient access: tcoeff.
+2011-04-14: Ulrich Loup <loup@cs.rwth-aachen.de>
+  * example_presentation.cpp: Renamed to example_AlgoSyn_presentation.cpp + fixed small typo.
+  * example_NFM2011_presentation.cpp: Added.
+  * RationalUnivariatePolynomial.cpp: UnivariatePolynomial::info -> ex::info.
+  * IntervalRepresentation.h: Made isEqual inline and protected.
+  * IntervalRepresentation.cpp: Removed order from string output.
+  * IntervalRepresentation.*: Added method refine(eps).
+  * IntervalRepresentation_unittest.*: Added tests for refine(eps).
+2011-04-15: Ulrich Loup <loup@cs.rwth-aachen.de>
+  * IntervalRepresentationFactory*: Updated comment.
+  * Released 0.1.3.
+
+2011-04-30: Ulrich Loup <loup@cs.rwth-aachen.de>
+	* IntervalRepresentation.h: Updated comment.
+	* UnivariateRepresentation.*: Added, simple attribute structure provided.
+2011-05-05: Ulrich Loup <loup@cs.rwth-aachen.de>
+  * IntervalRepresentation.*: Added arithmetic operators again.
+  * operators.*: Removed arithmetic operators for IntervalRepresentation.
+  * IntervalRepresentation_unittest.cpp: Modified to fit the new operators, i.e., added brackets.
+2011-05-09: Joachim Redies <joachim.redies@rwth-aachen.de>
+  * IntervalRepresentationFactory.*: Added  approximate(ir, permitted_error) currently using sturm/bisection method
+  * IntervalRepresentaionFactory.*: Added sturm_bisection, bisection auxiliary methods approxmiate (actual implementation)
+  * examples/appro_test.cpp: Added. Shows the use and performance of approximate.
+  * IntervalRepresentationFactory_unittest.*: New test case: approximate
+2011-05-10: Joachim Redies <joachim.redies@rwth-aachen.de>
+  * IntervalRepresentationFactory.*: Added  approximate_newton(ir, permitted_error) currently using newton/sturm/bisection method
+  	- the newton/sturm/bisection method is not deterministic
+  	- the newton/sturm/bisection mehtod is has bugs! For big polynomial sometimes the given intervals
+  	  are very near the root but the do NOT contain the root.
+  * IntervalRepresentaionFactory.*: Added newton_iterations, expand_rootrange auxiliary methods approxmiate (actual implementation)
+  * examples/appro_test.cpp: Modified. Shows the use and performance of approximate and approximate_root in comparision.
+  * IntervalRepresentationFactory_unittest.*: New test case:  approximate_newton (although the test does not fail the newton methods has bugs!!!)
+2011-05-18: Joachim <joachim.redies@rwth-aachen.de>
+  * IntervalRepresentationFactory.*: Renamed some methods
+    - Renamed sturm_bisection(...) -> sturmBisection(...)
+    - Renamed newton_iterations(...) -> newtonIterations(...)
+    - Renamed expand_rootrange(...) -> expandRootrange(...)
+2011-05-26 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * *.h: - Removed initial "using namespace" lines in order to prevent intermixing of names.
+    - Added "using namespace GiNaC;" as a consequence of the changes in the other headers.
+  * *_unittest.h: Added "using namespace GiNaC;" as a consequence of the changes in the other headers.
+2011-05-30 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * MultivariatePolynomial.h: Removed all static methods.
+  * MultivariatePolynomial_unittest.*: Removed tests regarding static methods of MultivariatePolynomial.
+  * MultivariateMonomial.h: Removed all static methods.
+  * MultivariateMonomial_unittest.*: Removed tests regarding static methods of MultivariateMonomial.
+  * MultivariatePolynomialFactory.h: Added, containing the static methods of MultivariatePolynomial.
+    - ... containing the static methods of MultivariateMonomial.
+  * MultivariatePolynomialFactory_unittest.*: - Added, containing tests for the static methods of MultivariatePolynomial.
+    - ... containing tests for the static methods of MultivariateMonomial.
+  * ginacra.h: Added MultivariatePolynomialFactory.h.
+2011-07-01 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * ginacra_shell.*: Moved to ginacraconsole.*.
+  * ginacraconsole.*: - Added.
+2011-07-04 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * ginacraconsole.cpp: - Added help method accepting a context.
+    - Implemented a cleaner way to read the input arguments.
+2011-07-06 Bateer Siqin <bateer.siqin@rwth-aachen.de>
+  * ginacraconsole.cpp: Added realRoots method to compute the real roots of polynomials.
+2011-07-06 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * ginacraconsole.cpp: Small bug fix in context help.
+2011-07-06 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * MultivariatePolynomialSet.h: Added a class to manage MultivariatePolynomials which ensures set conditions
+  * MultivariatePolynomial.h: Added trunc(symbol)
+  * MultivariatePolynomialFactory.h: Added truncation(polynomial, symbol) which is Trunc from Algorithms in Real Algebraic Geometry p. 22
+2011-07-06 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * src/Makefile.am: Added -lreadline for ginacraconsole target.
+2011-07-11 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * configure.ac: Added conditional/feature for console build depending on readline.
+  * src/Makefile.am: Made build of ginacraconsole dependent of whether feature is enabled or not.
+  * m4/vl_lib_readline.m4: Added originally from http://ac-archive.sourceforge.net/ac-archive/vl_lib_readline.html, modified to define the conditional LIBREADLINE corresponding to the preprocessor variable HAVE_LIBREADLINE.
+  * MultivariatePolynomial.h: Made mergeVariables public.
+2011-07-11 Bateer Siqin <bateer.siqin@rwth-aachen.de>
+  * MultivariatePolynomialFactory.h: Modified some spell errors of names of variables and functions.
+2011-07-12 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * src/SpecialQuotientRingMultiplicationTable.h: Added, including some simple functionality such as constructors and selectors.
+  * src/SpecialQuotientRingMultiplicationTable_unittest.*: Added.
+  * MultivariatePolynomial.h: Added method to compute the total degree of a polynomial w.r.t. to one variable.
+  * MultivariatePolynomial_unittest.*: Added tests for computing the total degree of a polynomial w.r.t. to one variable.
+2011-07-12 Bateer Siqin <bateer.siqin@rwth-aachen.de>
+  * ginacraconsole.cpp: Added Readline library support for maintaining a list of previously-entered command lines.
+  * ginacraconsole.cpp: Added method to compute the real roots of formats like x^2+1 in x.(empty list)
+2011-07-13 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * src/SpecialQuotientRingMultiplicationTable.h: Completed constructor.
+  * src/SpecialQuotientRingMultiplicationTable_unittest.*: Added constructor test.
+  * MultivariatePolynomialFactory.h: Added method synthesizeSpecialGroebnerBasisDegrees to generate the degree list for special Groebner bases.
+  * MultivariatePolynomialFactory_unittest.h: Added tests for synthesizeSpecialGroebnerBasisDegrees. Not all working yet.
+2011-07-13 Bateer Siqin <bateer.siqin@rwth-aachen.de>
+  * ginacraconsole.cpp: Added method to support for auto-complete command lines.
+2011-07-15 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * MultivariatePolynomialFactory.h: Removed superfluous checks. Adapted methods deformation, checkForSpecialGroebnerBasis and specialGroebnerBasis to the new notation of edition 2 of [BPR10]. Also added references in @see tags.
+  * utilities.*: Added method prod for computing the product of a list of expressions.
+  * MultivariatePolynomial.h: Changed method reduction to use the monomial as optional parameter.
+  * MultivariatePolynomial_unittest.h: Changed tests according to reduction.
+2011-07-16 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * MultivariatePolynomialFactory_unittest.cpp: Recomputed deformation test due to changes in deformation computation.
+2011-07-17 Bateer Siqin <bateer.siqin@rwth-aachen.de>
+  * ginacraconsole.h: Added the documentation for new methods in ginacraconsole.cpp.
+2011-07-17 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * MultivariatePolynomialFactory.h: synthesizeSpecialGroebnerBasisDegrees modified to output minimal degrees.
+  * MultivariatePolynomialFactory_unittest.h: Tests for synthesizeSpecialGroebnerBasisDegrees temporarily disabled.
+2011-07-18 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * ginacraconsole.cpp: Layout improvements and modified output of PROMPT.
+2011-07-22 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * MultivariatePolynomialFactory.h: Added method synthesizeSpecialGroebnerBasis combining specialGroebnerBasis and synthesizeSpecialGroebnerBasisDegrees.
+  * MultivariatePolynomialFactory_unittest.*: Added test for synthesizeSpecialGroebnerBasis.
+2011-07-23 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * MultivariatePolynomial.h: - Improved reduction method to use more efficient GiNaC arithmetic rather than GiNaCRA arithmetic.
+    - Changed m to be a non-optional argument.
+2011-07-24 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * MultivariatePolynomial.h: - Added exception in coeff for the case where the given monomial is not present in the current polynomial.
+      - Added exception in reduction for the case where the given monomial is not present in the current polynomial.
+2011-07-25 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * ginacraconsole.*: Moved includes from cpp file to h file.
+2011-07-27 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * MultivariatePolynomial.h: - Fixed bug in reduction in which the wrong list of variables was taken for the reduced polynomial.
+    - Removed superfluous space in print method.
+  * MultivariatePolynomialFactory.h: Fixed bug in specialGroebnerBasis in which the wrong list of variables was taken for the elements of the Groebner basis.
+2011-07-28 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * MultivariatePolynomialFactory.h: Fixed synthesizeSpecialGroebnerBasisDegrees in order for computing higher degrees than 2 which is needed for a proper deformation in the later special Groebner basis construction.
+  * MultivariatePolynomialFactory_unittest.cpp: Added missing test cases for specialGroebnerBasis and synthesizeSpecialGroebnerBasis.
+2011-07-30 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * SpecialQuotientRingMultiplicationTable.h: - Implemented sorting of basis elements in the constructor.
+    - Added comparison method isEqual and corresponding operator ==.
+  * operators.h: - Added operator<< for outputting SpecialQuotientRingMultiplicationTable.
+  * MultivariateTerm.h: Reimplemented method ex::print in order to have a smaller output compared to MultivariatePolynomial.
+  * MultivariatePolynomial.h: Improved implementation of print now using the attributes directly instead of calling their selectors.
+  * SpecialQuotientRingMultiplicationTable_unittest.cpp: Still assertion met in testConstructor -- uncommented corresponding line.
+2011-07-31 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * SpecialQuotientRingMultiplicationTable.h: Fixed checks in isEqual to use the attributes of the object to be compared with.
+  * SpecialQuotientRingMultiplicationTable_unittest.cpp: Uncommented testConstructor.
+2011-08-02 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * MultivariatePolynomial.h: Changed standard constructor to create a zero expression.
+  * SpecialQuotientRingMultiplicationTable.h: - Improved documentation.
+    - Added method to initialize the basis.
+    - Added method to initialize the multiplication table using MultivariatePolynomialSets (no functionality yet).
+  * MultivariatePolynomialSet.h: Added method add to add a MultivariatePolynomial (provisional).
+2011-08-03 Bateer Siqin <bateer.siqin@rwth-aachen.de>
+  * ginacraconsole.h: Modified the code and fixed the warnings that occur when generating doxygen documents.
+2011-08-03 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * IntervalRepresentationFactory.*: Removed newton_iterations, expand_rootrange, approximate_newton (no longer in use)
+  * MultivariatePolynomialFactory.h: Added signedSubresultant2(...) which is now working
+2011-08-03 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * NEWS: Updated.
+  * Released 0.1.4.
+
+2011-08-04 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * MultivariatePolynomial.h: Added const keyword to normalForm.
+2011-08-05 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * Unified preprocessor flags in all files.
+  * MultivariatePolynomial.h: Fixed bug in determineExs in which polynomial constant parts were split into several monomials.
+2011-08-06 Joachim Redies <joachim.redies@rwth-aaachen.de>
+  * MultvariatePolynomialSet.h: renamed add(...) to insert(...), fixed a bug in insert and added documentation
+  * MulitvariatePolynomialSet_unittest.*: Added the testcases
+2011-08-07 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * MultivariatePolynomialFactory.h: Renamed signedSubresultant2 to calculateSignedSubresultat(...) and made it private
+  * MultivariatePolynomialFactory.h: Added signedSubresultant(...)
+2011-08-09 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * MultivariatePolynomial.h: - Fixed bug in determineExs in which polynomial coefficients (due to parameterized polynomials) were not considered as belonging to the same monomial but seperated among several copies of their monomial.
+    - Planned: change of mTermExs into a map with monomialOrdering as parameter (improved speed).
+  * constants.h: - Renamed ex_is_lesseq to ex_is_less_deg (ex_is_less in use by ginac).
+2011-08-09 Bateer Siqin <bateer.siqin@rwth-aachen.de>
+  * ginacraconsole.cpp: Added specialGroebnerBasis method to compute a special Groebner basis of polynomial.
+    - Planned: add support for more monomial order.
+2011-08-09 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * MultivariatePolynomialSet.h: Fixed bug in insert
+  * MultivariatePolynomialSet.h: Added remove, isValidDomain, asList and pairWise
+  * MultivariatePolynomaiSet_unittest.*: Adnewmainded test cases for constructors, insert, remove, isValidDomain, asList, pairWise
+  * MultivariatePolynomialFactory_unittest.*: Added test case for signedSubresultant
+  * MultivariatePolynomialFactory.*: Added elimination (prototyp!)
+2011-08-09 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * ginacraconsole.cpp: Renamed ex_is_lesseq to ex_is_less_deg.
+  * utilities.*: Removed searchForSecondInOrderedExPairs. Its functionality is replaced by map::find.
+  * utilities_unittest.*: Removed tests belonging to searchForSecondInOrderedExPairs.
+  * MultivariatePolynomial.h: Moved to map implementation for mTermExs.
+2011-08-13 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * MultivariatePolynomialSet.h: Added begin() end() and iterator support
+  * MultivariatePolynomialFactory_unitest.*: Added test case for elimination (prototyp!)
+  * MultivariatePolynomialFactory.*: truncation no longer contains zero-Polynomial
+  * MultivariatePolynomial.h: Added lcoeff(symbol &s) that supports leading coefficient with respect to a certain variable s
+  * MultivariatePolynomial_unittest.h: expanded testLcoeff with test case for lcoeff(symbol &s)
+2011-08-14 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * MultivariatePolynomialSet.h: Added Domain()
+  * MultivariatePolynomialSet_unittest.*: Added test case for Domain()
+  * utilities.*: Moved calculateSignedSubresultant from MultivariatePolynomialFactory to utilities
+  * MultivariatePolynomial.h: Added constantFactorNormalForm() (Not Working!)
+  * MultivariatePolynomial_unitest.*: Added test case for constantFactorNormalForm (Fails!)
+2011-08-15 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * MultivariatePolynomialSetTest.cpp: testAsList() bugfixed.
+2011-08-18 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * MultivariatePolynomial.*: Renamed constantFactorNormalForm() -> divideByLcoeff()
+  * MultivariatePolynomialSet.*: Added divideByLcoeff()
+  * MultivariatePolynomialSet_unittest.*: Added test case for divideByLcoeff()
+2011-08-24 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * MultivariatePolynomialSet.*: Added copy constructor
+  * MultivariatePolynomialSet.*: Added = operator
+  * utilities.*: Renamed calculateSignedSubresultant -> calculateSignedSubresultants
+  * MultivariatePolynomialFactory.h: Added signedSubresultantsCoefficients
+  * MultivariatePolynomialFactory_unittest.*: Added test case for signedSubresultantCoefficients
+2011-08-25 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * MultivariatePolynomial.*: Added coeff(symbol s, unsigned int n) which returns the coefficient in front of s^n
+  * MultivariatePolynomial.*: Added isConstant()
+  * MultivariatePolynomial.*: Extended test case for coeff, isConstant
+2011-08-26 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * MultivariatePolynomialSet.*: Added removeConstants()
+  * MultivariatePolynomialFactory.*: Fixed bugs in elimination
+  * MultivariatePolynomialFactory_unittest.*: Extended test case for elimination
+2011-09-03 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * SpecialQuotientRingMultiplicationTable.h: - initializeMultiplicationTable() completed using MultivariatePolynomialSet::insert().
+2011-09-07 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * MultivariatePolynomialSet.*: Added operator== and operator !=
+  * MultivariatePolynomialSet_unittest.*: Added test case for operator== and operator !=
+2011-09-13 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * MultivariatePolynomaiSet.h: Fixed some typos.
+  * operators.h: Added << operator for MultivariatePolynomialSet.
+2011-09-19 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * MultivariatePolynomaiSet.h: - Added const keyword to argument of operator==.
+    - Included operators.h in order to enable the correct << operator.
+    - Return type of insert adapted to standard set implementation.
+    - Added iterator type.
+  * MultivariatePolynomaiSet_unittest.cpp: - Used CPPUNIT_ASSERT_EQUAL for equality operator checks.
+  * SpecialQuotientRingMultiplicationTable.h: - Added equality check for the set of products to the isEqual method.
+    - Fixed initializeMultiplicationTable using iterator of MultivariatePolynomaiSet.
+2011-09-20 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * constants.h: Fixed ex_is_under_the_staircase to return true in the correct case.
+  * MultivariatePolynomialFactory_unittest.cpp: Added normalForm example test to testMonomialsUnderTheStaircase.
+2011-09-23 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * SpecialQuotientRingMultiplicationTable.h: - initializeMultiplicationTable revised.
+2011-09-24 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * Added examples/example_liftingphase.cpp
+  * MultivariatePolynomialSet.*: Renamed Domain -> Variables
+2011-09-24 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * MultivariatePolynomaiSet.h: Suggested some todos for better performance/usability.
+  * SpecialQuotientRingMultiplicationTable.h: Revised multiplication table structure. Trace still incomplete, but initializeMultiplicationTable working
+2011-09-25 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * MultivariatePolynomialSet.*: Removed isValidDomain() and added domain check to constructors and insert (according to the suggests on 2011-09-24)
+2011-09-26 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * SpecialQuotientRingMultiplicationTable.h: - Removed border of the staircase computation.
+    - Switched mTermsUnderTheStaircase form list to vector.
+    - Added method computing the product of two basis elements.
+2011-09-27 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * MultivariatePolynomial_unitest.*: - Added test for trunc.
+    - Extended test for normalForm.
+  * MultivariatePolynomial.h: print: Switched order of monomial * coefficient and put coefficient into braces.
+  * MultivariatePolynomialFactory.h: Added method coefficientLcm to compute the least common multiple of the leading coefficients of a Groebner basis.
+  * MultivariatePolynomialFactory_unitest.*: Added test for coefficientLcm.
+  * SpecialQuotientRingMultiplicationTable.h: - Enriched output of print method.
+    - Fixes in initializeMultiplicationTable: (1) reversing monomial order in inner loop iterating over the leading coefficients because the basis is sorted ascendingly, (2) coefficient division is now done by polynomial division (conform with a ring), (3) the inner monomial index is counted backwards according to the reversed direction of the iterator.
+  * constants.h: Fixed bug in ex_is_under_the_staircase in which the operator returned always true.
+2011-09-28 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * SpecialQuotientRingMultiplicationTable.h: - Finished product and trace computations according to Algorithms 12.4 and 12.5.
+    - Added dimension selector.
+  * SpecialQuotientRingMultiplicationTable_unittest.*: - Reworked tests for trace, no hard test so far.
+    - Added test for product, not hard so far.
+2011-10-03 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * Added UnivariatePolynomialSet.*
+  * UnivariatePolynomialSet.*: Added insert, constructors and removeConstants
+  * Added UnivariatePolynomialSet_unittest.*
+  * UnivariatePolynomialSet_unittest.*: Added test case for insert and removeConstants
+2011-10-04 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * UnvariatePolynomial.*: Added divideByLcoeff
+  * UnivariatePolynomial_unittest.*: Added test case for divedeByLcoeff
+  * UnivariatePolynomialSet.*: Added isConstant
+  * UnivariatePolynomialFactory.*: Added.
+  * utilites.*: Added calculateSignedSubresultantsCoefficients
+2011-10-05 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * SpecialQuotientRingMultiplicationTable.h: - Moved implementation of methods to separate .tpp file.
+    - Added exception for invalid input in trace computation.
+  * SpecialQuotientRingMultiplicationTable.tpp: Added.
+    - Added exception for invalid input in trace computation.
+  * SpecialQuotientRingMultiplicationTable_unittest.cpp: Disabled trace test for it needs closer analysis.
+  * MultivariatePolynomial.h: Moved implementation of methods to separate .tpp file.
+  * MultivariatePolynomial.tpp: Added.
+2011-10-05 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * UnivariatePolynomialSet.*: Added divideByLcoeff.
+2011-10-06 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * UnivariatePolynomial.cpp: Fixed bug: constructor now checks the expanded version of the input expression.
+  * RationalUnivariatePolynomial.cpp: Fixed constructor check for proper rational coefficients.
+2011-10-06 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * UnivariatePolynomial.*: Added isZero and trunc.
+  * UnivariatePolynomialFactory.*: Added truncation.
+2011-10-06 Sebastian Junges <sebastian.junges@rwth-aachen.de>
+  * RationalUnivariatePolynomial.*: Added calculateRemainderTarskiQuery calculating TarskiQueries
+  * RationalUnivariatePolynomial.*: Added calculateSturmCauchyIndex calculating the CauchyIndex
+  * RationalUnivariatePolynomial_unittest.*: Added tests for added functions.
+2011-10-10 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * UnivariatePolynomialSet_unittest.*: Added test case for truncation
+  * UnivariatePolynomialFactory_unittest.*: Added.
+2011-10-11 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * src/Makefile.am: Added missing tpp file entries.
+2011-10-12 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * UnivariatePolynomialFactory.*: Added elimination.
+2011-10-14 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * MultivariateCoefficient.h: Moved implementation part to tpp file.
+  * MultivariateCoefficient.tpp: Added.
+  * MultivariateMonomial.h: Moved implementation part to tpp file.
+  * MultivariateMonomial.tpp: Added.
+  * MultivariateTerm.h: Moved implementation part to tpp file.
+  * MultivariateTerm.tpp: Added.
+  * SpecialQuotientRingMultiplicationTable.h: Moved implementation part to tpp file.
+  * SpecialQuotientRingMultiplicationTable.tpp: Added.
+  * Makefile.am: Added missing tpp file entries.
+2011-10-18 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * Added RealAlgebraicNumber.h
+  * RealAlgebraicNumber.h: Added Polynomial and sgn.
+  * Added NumericRepresentation.*
+  * NumericRepresentation.*: Added Polynomial, Number, eval and sgn.
+  * RealAlgebraicNumberFactory.*: Added (Prototype!).
+  * RealAlgebraicNumberFactory.*: Added generateSamplePoints (prototype!)
+  * IntervalRepresentaion.h: RealAlgebraicNumber is now a super-class
+  * NumericRepresentation.h: RealAlgebraicNumber is now a super-class
+2011-10-22 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * operators.tpp: Added, containing the implementation of operators based on template parameters.
+  * operators.*: Added the power operator ^ for MultivariatePolynomial.
+  * MultivariatePolynomial: Added pow method.
+  * MultivariatePolynomial_unitest.h: Added test for pow method.
+  * SpecialQuotientRingMultiplicationTable.*: - Moved trace to protected keyword since it only works for specially generated inputs.
+    - Added public method generalPositionTemplatePowerTrace generating valid input for trace which is needed in the limited points sampling method.
+2011-10-23 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * MultivariatePolynomialFactory.h: Added parameter to termsUnderTheStaircase in order for extracting the Gröbner basis' leading coefficient lcm.
+  * SpecialQuotientRingMultiplicationTable.*: - Added attribute coefficientLcm: lcm of the leading coefficients of the special Gröbner basis elements.
+    - Fixed computation in generalPositionTemplatePowerTrace according now using coefficientLcm as suggested by Alg. 12.14.
+2011-10-23 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * src/Makefile.am: Fixed bugs with UnivariatePolynomialFactory.* and UnivariatePolynomialFactory_unittest.*
+2011-10-24 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * src/Makefile.am: Fixed bugs with UnivariatePolynomialSet.h
+  * UnivariatePolynomialSet.*: Added print
+  * UnivariatePolynomialFactory.*: Added eliminationSets
+  * RealAlgebraicNumber.h: Added RealAlgebraicNumberPtr, print
+  * NumericRepresentation.h: Added NumericRepresentationPtr, print
+  * IntervalRepresentation.h: Added IntervalRepresentationPtr, print
+2011-10-25 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * Added RealAlgebraicNumber.cpp
+  * RealAlgebraicNumber.*: Added compare, Variable.
+  * RealAlgebraicNumberFactory.*: generateSamplePoints works correctly.
+  * UnivariatePolynomialSet.*: Added Variable.
+  * IntervalRepresentation.*: Added Variable.
+  * NumericRepresentation.*: Added Variable.
+2011-10-25 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * constants.h: Renamed global constants for the infinitesimals and added a type for them.
+  * MultivariateCoefficient.*: Added method to compute the order of the coefficient in a specified infinitesimal.
+  * MultivariateCoefficient_unittest.*: Added test for order method.
+2011-10-26 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * utilities.*: - Added method is_constant determining whether a given polynomial expression is constant in a list of variables.
+    - Fixed method isolateByVariables by adding the case that the polynomial can be a constant polynomial in the given variables.
+  * MultivariatePolynomial.tpp: Revised isConstant.
+  * MultivariateTerm.*: Revised constructor check for being a term - now constant polynomials are recognized as coefficients.
+  * MultivariateCoefficient_unittest.*: Extended test for order method.
+  * IntervalRepresentaion.h: Cleaning.
+  * SpecialQuotientRingMultiplicationTable.*:
+2011-10-26 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * tree.h: Added. The class tree is in a namespace called dastru due to a name collision in GiNaC!
+  * RealAlgebraicPoint.*: Added.
+2011-10-28 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * RealAlgebraicNumber.*: - Implemented as derived class of GiNaC::basic.
+    - Removed any special functionality for it should be in the specializations IntervalRepresentaion or NumericRepresentation.
+  * IntervalRepresentaion.*: Now derived from RealAlgebraicNumber.
+  * NumericRepresentaion.*: Now derived from RealAlgebraicNumber and numeric. TODO: Operators need implementation by numeric operators.
+  * RealAlgebraicNumberFactory.cpp: Uncommented sort at the end of generateSamplePoints because of missing static comparision function. -> TODO
+2011-10-30 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * constants.h: Added type for infinitesimal symbols providing a limit value. Todo: Extend by ordering between the given infinitesimals.
+  * ginacraconsole.h, MultivariatePolynomialFactory*: Adapted to new infinitesimal type.
+  * MultivariateCoefficient_unittest.cpp: Added meaningful test to testOrder().
+2011-11-02 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * RealAlgebraicNumberFactory.*: Removed compare here, because of pointer issues; Added print(for pointers!)
+2011-11-03 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * CAD.*: Added.
+  * RealAlgebraicPoint.*: Added constructors for vector<RealAlgebraicNumberPtr>, copy-constructor and standard-constructor, conjoin.
+  * CAD.*: Added basePhase.
+  * RealAlgebraicNumberFactory.*: Added equal, isNumeric, isInterval.
+2011-11-03 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * Polynomial.*: Added as a direct super class of MultivariatePolynomial and UnivariatePolynomial extending ex as well as providing the test for an ex being a polynomial.
+  * MultivariatePolynomial.h: Cleaning unnecessary includes.
+  * MultivariatePolynomial.tpp: Changed behavior of pow. Now pow(0) of the 0 polynomial is always 0 (as product binds stronger than exponentiation).
+  * TBTSLeaf.*: Added. Provides leaf of a search tree of a Tree-Based Theory Solver (TBTS). The TBTS should function as a standard communication method between decision procedures whose search is guided by a tree structure traversing all possible subsets of polynomials.
+  * {Multivariate,Univariate}Polynomial.*: Now being derived from Polynomial, not ex.
+2011-11-04 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * NEWS: Added some items for 0.1.5.
+  * RealAlgebraicPoint.*: - Removed mSize.
+        - Added function dim() returning the size of the RealAlgebraicNumber vector.
+        - Rewrote print by using an iterator.
+        - Added standard constructor (constructing for size == 0).
+  * TBTSLeafCAD.*: First abstract structure and documentation added. Provides a TBTSLeaf implementation of the CAD decision procedure.
+2011-11-04 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * CAD.*: Added lift, liftNumeric, liftInterval (not implemented!), completeLift, expand (prototype !)
+  * RealAlgebraic.*: Added clone.
+  * NumericRepresentation.*: Added clone.
+  * IntervalRepresentation.*: Added clone.
+  * UnivariatePolynomialFactory.*: Reverted the ordering of eliminationSets.
+2011-11-05 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * RealAlgebraicPoint.h:
+  * CAD.*: - Adapted definition and implementation of lift* methods.
+  * IntervalRepresentaion.*: - Removed superfluous operation Variable().
+    - Added method sampleValue determining a good choice out of the isolating interval for the CAD sampling algorithm.
+2011-11-06 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * RealAlgebraicNumberFactory.*: Fixed a bug in generateSamplePoints: polynomials without roots have a single sample point now and not a segfault.
+  * CAD.*: Renamed Ulrich's lift implementation to lift2
+2011-11-07 Ulrich Loup <loup@cs.rwth-aachen.de>
+2011-11-07 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * RealAlgebraicPoint.h: Derived from vector<RealAlgebraicNumberPtr> and removed superfluous encapsulation.
+2011-11-08 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * RealAlgebraicNumberFactory.*: generateSamplePoints accepts list<RationalUnivariatePolynomial> instead of RationalUnivariatePolynomial.
+2011-11-19 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * utilities.*: Added naivRem and naivQuo.
+2011-11-20 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * TBTSLeafCAD.*: Replaced set<UnivariatePolynomial, ex_is_less> with UnivariatePolynomialSet.
+  * CAD.*: Added abstract methods for one-step elimination of a variable in one polynomial/a pair of polynomials, splitting up the original elimination method.
+2011-11-21 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * TBTSLeafCAD.*: Some improvements in structure of projections as well as sample values. First implementation of construct.
+  * CAD.*: Added methods to aid TBTSLeafCAD.
+2011-11-23 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * MultivariatePolynomialFactory.h: Removed elimination, truncation and isConstantPol, subresultants and subresultantCoefficients
+  * MultivariatePolynomialFactory_unittest.*: Removed test cases for elimination, truncation, subresultants and subresultantCoefficients
+2011-11-25 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * doxygen.cfg: Added tags @complexity, @rcomplexity for runtime complexity specifications and @scomplexity for space complexity specifications.
+  * [Interval|Numeric]Representaion.*: Renamed to RealAlgebraicNumber[I|N]R.
+2011-11-28 Ulrich Loup <loup@cs.rwth-aachen.de>
+  --- Refactoring of Multivariate* branch: part 1 (removing old branch) ---
+  * operators.tpp: Removed.
+  * ginacraconsole.cpp: Disabled part for special Groebner bases.
+  * Multivariate*: Disabled in src/Makefile.am.
+  * src/Makefile.am: Disabled the following entries:
+    MULTIVARIATE_H = MultivariatePolynomial.h MultivariatePolynomial.tpp MultivariateTerm.h MultivariateTerm.tpp MultivariateMonomial.h MultivariateMonomial.tpp MultivariateCoefficient.h MultivariateCoefficient.tpp
+    MULTIVARIATE_UNITTEST_SOURCES = MultivariatePolynomial_unittest.h MultivariatePolynomial_unittest.cpp MultivariateTerm_unittest.h MultivariateTerm_unittest.cpp MultivariateMonomial_unittest.h MultivariateMonomial_unittest.cpp MultivariateCoefficient_unittest.h MultivariateCoefficient_unittest.cpp
+    RISC_H = MultivariatePolynomialFactory.h SpecialQuotientRingMultiplicationTable.h SpecialQuotientRingMultiplicationTable.tpp
+    RISC_UNITTEST_SOURCES = MultivariatePolynomialFactory_unittest.h MultivariatePolynomialFactory_unittest.cpp SpecialQuotientRingMultiplicationTable_unittest.h SpecialQuotientRingMultiplicationTable_unittest.cpp
+2011-11-28 Sebastian Junges <sebastian.junges@rwth-aachen.de>
+  * Added the *MR classes, which should become dedicated classes for multivariate polynomials.
+	Basic datastructure declared
+	Wrote the compare-functions for the monomial ordering.
+  * Minor changes for univariate polynomials. Square-method, SignCondition-vector. Most is commented out as it has not been finished.
+
+2011-11-28 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * CAD.cpp: Implemented samples, elimination
+2011-11-29 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * TBTS*: Removed.
+  * src/Makefile.am: Removed entries about TBTS*.
+2011-11-30 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * ginacra.pc.in: Added. This file is used to generate ginacra.pc during make. ginacra.pc carries information for the pkg-config packaging system enabling easy library installation.
+  * Makefile.am, configure.ac: Changes in order for the pkg-config files being generated properly.
+  * README: Added some more hints concerning libtool issues.
+  * OpenInterval.*: Added method to compute a minimally-represented numeric sample out of the interval.
+  * RealAlgebraicNumber.cpp: Shifted sample algorithm to OpenInterval.
+  * RealAlgebraicNumberIRFactory.*: Removed.
+  * RealAlgebraicNumberFactory.*: - Sorting the source code.
+    - Added former methods of RealAlgebraicNumberIRFactory (without adaption to the abstract type RealAlgebraicNumber yet).
+  * CAD.*: Changed names RealAlgebraicNumberIRFactory -> RealAlgebraicNumberFactory.
+  * ginacraconsole.cpp: Changed names RealAlgebraicNumberIRFactory -> RealAlgebraicNumberFactory.
+2011-11-30 Sebastian Junges <sebastian.junges@rwth-aachen.de>
+  * utilities.h: Added functor for accumulating the second entry of a pair if it is an unsigned.
+  * Multivariate*MR-branch: Further development committed.
+2011-11-31 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * OpenInterval: Improvements on sample method.
+  * ginacra.pc: Fix in package name.
+2011-12-02 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * OpenInterval.cpp: Improved sample method which now computes a value with the smallest numeric representation out of every OpenInterval.
+  * OpenInterval_unittest.*: Unit tests on sample method.
+  * RealAlgebraicNumberFactory.*: - Changed realRoots to output a list of RealAlgebraicNumberPtr now.
+    - Changed generateSamples method to use the new output format of realRoots.
+  * RealAlgebraicNumberFactory_unittest.cpp: Uncommented test cases with realRoots.
+  * ginacraconsole.cpp: Uncommented refinement part (needs a distinction between the different representations).
+  * CAD.cpp: Adjusted samples method to use the new output format of realRoots.
+2011-12-03 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * Reformatting in some files.
+  * RealAlgebraicNumberIR.*: Added publicly visible print method.
+  * operators.*: Added operators for equality and printing on RealAlgebraicNumberPtr.
+  * RealAlgebraicPoint.*: Adjusted print method to use a general print_context now.
+  * RealAlgebraicNumberFactory.*: Added some documentation to the common comparison methods.
+  * RealAlgebraicNumberFactory.cpp: Fixed the equal method to work properly with mixed representations of RealAlgebraicNumber.
+2011-12-04 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * RealAlgebraicNumberFactory_unittest.cpp: Adapted tests for realRoots and commonRealRoots to the new data type; approximate will move to RealAlgebraicNumberIR.
+  * OpenInterval.cpp: Adjusted method contains to return true if 0 is checked for being contained in the zero interval.
+  * RealAlgebraicNumber.*: Modified non-GiNaC::basic methods to be virtual in order for a correct replacement in the representation classes.
+  * OpenInterval.cpp: Some fixes concerning marginal cases in sample method.
+2011-12-05 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * All: - Changed Copyright from 2010 to 2010-2011.
+    - Added all GiNaCRA classes to the namespace GiNaCRA and added specific using statements in order to make GiNaC types available.
+  * OpenInterval.cpp: Some improvements to sample method: alternating search for the numerator, reduced the amount of gcd/lcm computations, performing rational instead of integer division.
+  * RealAlgebraicNumberFactory.cpp: Added heuristics in realRoots which try to find a numeric representation for isolating intervals.
+  * Constraint.*: Added. The class represents a polynomial of type Polynomial together with a condition on its sign: -1, 0, 1.
+  * src/Makefile.am: Added rules for Constraint. Added line breaks in order for better maintainability.
+  * constants.h, UnivariatePolynomial.h: Moved sign type to constants.h.
+  * MultivariatePolynomaiSet.*: Removed. Unit tests remain due to re-implementation in UnivariatePolynomialSet_unittest.
+2011-12-06 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * UnivariatePolynomialFactory.*: Removed. Contents are now in class CAD.
+  * UnivariatePolynomial_unittest.*: Renamed to CAD_unittest.*.
+  * CAD.*: Some reordering and design of class attributes as well as constructors.
+2011-12-06 Sebastian Junges <sebastian.junges@rwth-aachen.de>
+  * utilities.h: removed functor for accumulating the second entry of a pair if it is an unsigned.
+  * Multivariate*MR-branch: A lot of bugfixes, several new unittests.
+  * Groebner.*: A new class for groebner-bases calculation.
+2011-12-07 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * operators.*: Added << operator for UnivariatePolynomialSet.
+  * constants.h: Changed ordering on symbols from structs to functors.
+  * VariableDB.{h,cpp}: Added. Provides a wrapper class for easy access to a variable list. This class shall function as central storage for variables in MultivariatePolynomial algorithms.
+2011-12-07 Sebastian Junges <sebastian.junges@rwth-aachen.de>
+  * MultivariateCoefficientMR.*: Added. Wrapper for expressions, additional functionality to come.
+  * MultivariateTermMR: Changed coefficients from expression into MultivariateCoefficientMR.
+  * Multvariatte*MR-branch: Added constructors and unittests.
+2011-12-08 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * Refactoring: list<symbol> -> vector<symbol> with all occurrences.
+  * CAD.cpp: - Fixed bug in elimination in which the elimination does provoke a segfault on empty sets.
+  * UnivariatePolynomialSet.cpp: Revised removeConstants.
+  * operators.*: Added operators == and << for Constraints.
+  * utilites.*: Added method to compute the sign of a numeric with return type sign as defined in constants.h.
+  * Constraint.*: - Added variables as attribute.
+    - Implemented method satisfiedBy.
+  * Constraint_unittest.*: Added with first implementations of testConstructor and testSatisfiedBy.
+  * RealAlgebraicNumber{IR,NR,}.*: Method sgn has now return type sign.
+2011-12-08 Sebastian Junges <sebastian.junges@rwth-aachen.de>
+  * MultivariatePolynomialMR: toEx() method added.
+  * settings.h added: Initialize method for the MR branch.
+  * VariableListPool.*: Added. Contains pointers to the variable-database and the standardlists.
+2011-12-09 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * Constraint.*: Bugfixes in satisfiedBy and evaluateIR.
+  * Constraint_unittest.cpp: Some more tests on satisfiedBy.
+  * RationalUnivariatePolynomial.*: Improved test on rationality of the polynomial, now separated in a public method.
+2011-12-09 Sebastian Junges <sebastian.junges@rwth-aachen.de>
+  * MultivariatePolynomialMR: Expressions can be used to construct MultivariatePolynomialsMR
+  * Removed VarialbleDB.* Content is now in SymbolDB.* and responsible for parameters and variables.
+  * SymbolDB: Added ability to add whatever symbolname you want when adding new variables.
+2011-12-09 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * CAD.*: Bugfix in samples
+  * RealAlgebraicNumberFactory.*: Bugfix in generateSamplePoints
+2011-12-10 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * All: Unified * @ for tags in documentation.
+  * Constraint_unittest.*: Added four-variable IR test for satisfiedBy.
+  * RealAlgebraicNumberFactory.*: Moved generateSamplePoints to CAD::samples.
+  * CAD.*: Re-factored sample construction methods by introducing a new auxiliary sample method computing the samples by using a list of roots.
+2011-12-11 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * CAD.*: Implemented elimination(P,Q,...)
+2011-12-11 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * CAD.cpp: Revised constructSampleAt.
+  * RealAlgebraicNumberFactory.*: Renamed compare to less.
+  * operators.*: Added operator< for RealAlgebraicNumberPtr.
+2011-12-11 Sebastian Junges <sebastian.junges@rwth-aachen.de>
+  * Groebner: Working. However, the result of reduce() is not fully reduced yet.
+2011-12-13 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * CAD.*: - Implemented method complete.
+    - Implemented method samples providing the samples of a polynomial whose coefficients are evaluated at a real algebraic point.
+    - Cleaning.
+  * RealAlgebraicPoint.*: Removed conjoin method for RealAlgebraicPoint.
+2011-12-14 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * operators.*: Added operator<< for RealAlgebraicPoint.
+  * RationalUnivariatePolynomial.*: Removed operator<<.
+  * UnivariatePolynomial.*: - Removed operator<<.
+    - Renamed print method to GiNaC-conform do_print.
+  * UnivariatePolynomialSet.*: Removed print function.
+  * RealAlgebraicNumberFactory.cpp: Added midpoint heuristics to searchRealRoots.
+  * Groebner_unittest.cpp, settings.h, Groebner.cpp: Removed debug outputs.
+  * CAD.*: Several fixes. Method complete operational.
+2011-12-15 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * CAD_unittest.*: Moved test case for elimination from MultivariatePolynomialFactory_unittest
+  * utilities_unitest.*: Moved test case for subresultants from MultivariatePolynomialFactory_unittest
+2011-12-15 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * CAD.*: - Cleaning: removed static methods basePhase and lift* since this functionality is now covered by the class CAD.
+    - Further bug fixes.
+  * RealAlgebraicNumberIR.*: Renamed print method to GiNaC-conform do_print.
+  * operators.cpp: - Adapted to new print method of RealAlgebraicNumberIR.
+    - Added operator!= for RealAlgebraicNumberPtr.
+  * RealAlgebraicNumber*: Added flag isRoot to mark whether this real algebraic number stems from a root computation.
+  * RealAlgebraicNumberFactory.*: Fixed less for RealAlgebraicNumberPtr by using !equal.=======
+  * operators.cpp: Adapted to new print method.
+2011-12-16 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * RealAlgebraicNumberIR.*: Added efficient method to refine an isolating interval in order to not contain a specific number.
+  * CAD.*: Revised sampling algorithm, which now takes existing samples and isRoot flags into account.
+  * OpenInterval.cpp: Fixed bug in midpoint in which the division was non-rational (by 2.0).
+2011-12-16 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * utilities.*: Removed NaivQuo and NaivRem.
+2011-12-17 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * OpenInterval.cpp: Moved operators to operators.h.
+  * OpenInterval.cpp: Improvements to midpoint calculation.
+  * RealAlgebraicNumberFactory.cpp: Improvements to the realRoots method.
+  * RealAlgebraicPoint.*: Removed print.
+  * RealAlgebraicNumber.*: Removed inheritance from basic since it inhibits the proper functioning of RealAlgebraicNumberIR which has GiNaC::basic functionality!
+  * RealAlgebraicNumberIR.*: - Inherited from basic with all GiNaC-functionality.
+    - Moved operators (except assignment) to operators.h.
+  * operators.*: - Added all but assignment operators of OpenInterval.
+    - Added all but assignment operators of RealAlgebraicNumberIR.
+  * CAD.cpp: Some improvements to samples methods.
+2011-12-18 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * RealAlgebraicNumberIR.*: - Improved and fixed refinement: now the midpoint is tested for being a root as well, and if so returned as a numeric value.
+    - Added method refineAvoiding which refines the isolating interval so that a given numeric is not contained any more.
+    - Improved equality by heuristics.
+    - Added attribute for counting the number of refinements.
+  * RealAlgebraicNumberFactory.cpp: - Fixes in searchRealRoots.
+    - Improvements of equality check by RealAlgebraicNumberIR::refineAvoiding.
+    - Equality check now takes number of refinements into account.
+2011-12-19 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * CAD*: - Fixed bug in which sample lists containing samples of type RealAlgebraicNumberIR did not contain the refined samples due to the sorting during insertion.
+    - As to the fixed bug, the samples are now stored in a sorted list (SampleList) as opposed to the stl set, since the set implementation does not permit mutable objects.
+2011-12-23 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * RealAlgebraicNumber.*: Removed operators for arithmetic and relational operations.
+  * CAD.h: Fixed insert function of SampleList to check whether the set is empty.
+  * CAD_unittest.cpp: Finished test for SampleList.
+2011-12-25 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * RealAlgebraicNumberFactory.cpp: Fixed less method to explicitly check for non-equality as first step.
+  * CAD.cpp: In sample construction, added the case where a new root equals an existing non-root sample.
+  * CAD.h: Fix in SampleList::insert in which a segfault occurred when inserting an element at the very end of a list.
+2011-12-26 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * RealAlgebraicNumberIR.*: Added method isLessWhileUnequal to compute relation less more efficiently if the two numbers are unequal.
+  * operators.cpp: Improved operators <= and > for RealAlgebraicNumberIR using RealAlgebraicNumberIR::isLessWhileUnequal.
+  * RealAlgebraicNumberFactory.cpp: Improved less using operator <=.
+2011-12-27 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * RealAlgebraicNumberIR.*, operators.*: Implemented all operators for RealAlgebraicNumberIR using and yielding references in order to support refined RealAlgebraicNumberIR objects.
+  * RealAlgebraicNumberIR.cpp: Changed standard value for mIsRoot to true in all constructors.
+2011-12-28 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * operators.*: Added == operator for const RealAlgebraicNumberIR& in order to support for the cppunit test suite.
+  * operators.cpp: - Improved operator<< for RealAlgebraicPoint.
+    - Improved operator<< for Constraint.
+  * RealAlgebraicNumberFactory.cpp: Fixed interval-bound, numeric comparisons in method less. Added some improvements due to equality check.
+  * constants.h: Removed struct symbol_is_less{,eq}_lex, now implemented as function in utilites.
+  * utilites.*: Added functions symbol_is_less{,eq}_lex.
+2011-12-29 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * RealAlgebraicPoint.h: Added constructor for lists of RealAlgebraicNumberPtr.
+  * CAD.*, Constraint.*: Removed evaluateIR and moved it to one location as static method in RealAlgebraicNumberFactory.
+  * RealAlgebraicNumberFactory.*: Added static method evaluateIR evaluating the coefficients of a given UnivariatePolynomial with a list of RealAlgebraicNumberIR w.r.t. to a given variable list.
+  * CAD.cpp: Fixed variable order in constructSampleAt.
+2011-12-30 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * UnivariatePolynomial.h: Changed struct comparator for UnivariatePolynomial to static function.
+  * UnivariatePolynomialSet.*: Now uses function pointer for the set comparator.
+  * CAD.*: - Changed interface of samples methods so that they now take a reference for the list of existing samples, what is more efficient and ensures the up-to-date refined intervals.
+    - Reworked check, liftCheck and samples methods to reduce redundant code and do not miss precomputed samples in another run.
+2011-12-31 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * RealAlgebraicNumberFactory.cpp: - Cleaning: removed superfluous debug outputs.
+    - Fixed bug in evaluateIR. The method does now take only the variables of the coefficients which must not contain the main variable of the input polynomial.
+  * Constraint.cpp: - Cleaning: encapsulated every debug output by preprocessor flag GINACRA_CONSTRAINT_DEBUG.
+    - Method satisfiedBy is now properly adapted to the new interface of evaluateIR.
+  * CAD.*: - Added method printSampleTree.
+    - Cleaning: encapsulated every debug output by preprocessor flag GINACRA_CAD_DEBUG.
+    - Many bugfixes in methods liftCheck and samples.
+    - Method samples (by lifting) is now properly adapted to the new interface of evaluateIR.
+  * examples/example_CAD_{1,2,3}.cpp: Added/extended by timing and comprehensive output.
+2011-01-01 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * settings.h: Added optimization flags for realRoots.
+  * htdocs/: Updated website, added section "Philosophy" and made the HTML code w3-proof.
+2011-01-02 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * settings.h, constants.h: Added @file tags in order for the proper doxygen documentation.
+  * UnivariatePolynomialSet.*: Made constructors inline.
+  * settings.h: Removed optimization flags for realRoots, moved to RealAlgebraicNumberFactory.h.
+  * RealAlgebraicNumberFactory.*: - Added optimization flags for realRoots.
+    - Implemented optimizations for the non-timed flags.
+  * RealAlgebraicNumberFactory_unittest.cpp: Added root sorting in order to get a comparable result not influenced by heuristics.
+2011-01-03 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * examples/example_CAD_4.cpp: Example disproving the functioning of CAD. Assumption: lifting not working in some cases.
+  * Constraint.*: Added flag to indicate a negated constraint what enables the representation of weak inequalities and !=.
+  * Constraint_unittest.*: Added some tests for the negated flag.
+2011-01-04 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * all: - License changed from LGPLv3 to GPLv3 by removing any LGPL text from the files and replaced it by GPL text if appropriate.
+    - Changed Copyright line in every file to reach from 2010 to 2012 and contain all authors.
+2011-01-05 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * RealAlgebraicNumberIR.*: - Implemented calchash function returning the hash value of mPolynomial.
+    - In evalf, added level many refinements before outputting the midpoint.
+  * RealAlgebraicNumberIR_unittest.*: Added tests for evalf functioning.
+  * RealAlgebraicNumber.*: Added approximateValue method in order to provide this functionality on top level.
+  * RealAlgebraicNumberNR.*: Implemented approximateValue by outputting the evalf result.
+  * RealAlgebraicNumberIR.cpp: Rewrote standardSturmSequence by using objects on the stack rather than the heap, and cleaned up a little.
+  * examples/example_RAN_1.cpp: Added. Example testing RealAlgebraicNumberIRs within GiNaC expressions.
+  * UnivariatePolynomial.*: - Added method rem offering an adapted variant of GiNaC::rem not checking for the rational_polynomial flag.
+    - Added flag to the constructor in order for disabling the is_polynomial check.
+  * RationalUnivariatePolynomial.*: Adopted method sgn to use the sign type.
+  * RationalUnivariatePolynomial_unittest.cpp: Adopted sgn tests to use the sign type.
+2011-01-06 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * utilites.*: - Revised/fixed is_rational_polynomial.
+    - Added is_realalgebraic_polynomial by additionally checking the typeid of the coefficients for containing "RealAlgebraicNumber".
+  * UnivariatePolynomial.*: - Moved operators (except assignment) to operators.*.
+    - Removed twoNormSquare().
+  * UnivariatePolynomial_unittest.*: Adapted to changes in UnivariatePolynomial.
+  * operators.*: Added UnivariatePolynomial arithmetic and relational operators.
+  * RealAlgebraicNumberIR.*: Added method sgn() to compute the sign of the real algebraic number.
+  * RealalgebraicUnivariatePolynomial.*: Added.
+2011-01-07 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * utilites.cpp: Fixed a bug in is_rational_polynomial.
+  * RealalgebraicUnivariatePolynomial_unittest.*: Added.
+2011-01-08 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * RealAlgebraicNumberIR.*: - Overwrote and implemented method info returning information about the GiNaC type, in particular, info_flags::numeric, info_flags::algebraic and info_flags::real.
+    - Added method pow computing the power of the real algebraic number to a given exponent, what is currently done by successive multiplication.
+    - Added .primpart() calls to the arithmetic operations.
+  * utilites.*: - Added is_realalgebraic_term testing if a term is a mixed term of numerics and RealAlgebraicNumbers.
+    - Reimplemented is_realalgebraic_polynomial based on is_realalgebraic_term.
+  * RealalgebraicUnivariatePolynomial_unittest.*: - Implemented setUp() and testConstructor().
+    - Added tests for RealalgebraicUnivariatePolynomial::cauchyBound and RealalgebraicUnivariatePolynomial::maximumNorm.
+  * OpenInterval.*: Added method to compute the power of an open interval in interval arithmetic (being finer than the simple product).
+  * operators.*: - Added operator^ for RealAlgebraicNumberIR.
+    - Added mixed OpenInterval/numeric operators for +, -, *.
+    - Added mixed RealAlgebraicNumberIR/numeric operators for + and *.
+  * OpenInterval_unittest.*: Added some tests for OpenInterval::pow and the new operators.
+2011-01-09 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * RealAlgebraicNumber.*: Added method sgn().
+  * RealAlgebraicNumberIR_unittest.*: Added test for the sgn() method.
+  * RealalgebraicUnivariatePolynomial.*: - Fixes in normalizeCoefficint().
+    - Implemented methods evaluateAt() and sgn() applied on numerics.
+  * All: Created new folder structure src/{lib,tests,tools} now containing the files with the respective purpose.
+2011-01-10 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * operators.*: - Added operators for subtracting RealAlgebraicNumberIR and numeric.
+    - Fixed subtraction operators for OpenInterval and numeric.
+  * RealAlgebraicNumberIR_unittest.cpp: Added some tests for RealAlgebraicNumberIR and numeric.
+  * RealalgebraicUnivariatePolynomial.cpp: Fixed bug in evaluateAt in which the powers of the numeric to evaluate was not multiplied with the respective coefficients.
+2011-01-11 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * RealAlgebraicNumberIR_unittest.cpp: Some more arithmetic tests.
+  * RealalgebraicUnivariatePolynomial.cpp: - Bugfixes in normalizeCoefficient.
+    - Fixes of some marginal cases in evaluateAt.
+    - Functions which were made inline: sgn.
+    - Implemented templated versions of standardSturmSequence, signVariations and countRealRoots.
+  * RealAlgebraicNumberIR.*: - Added flag isNumeric indicating whether an exact numeric representation was found during refinement.
+    - Fixed bugs in assignment operator in which not all attributes were transfered.
+    - Refactoring: lowercased selector names.
+  * RealAlgebraicNumberFactory.*: Moved method countRealRoots to RationalUnivariatePolynomial.
+  * RationalUnivariatePolynomial.*: - Added method counting real roots by a given Sturm sequence (moved from RealAlgebraicNumberFactory).
+    - Added method counting the real roots of a given RationalUnivariatePolynomial.
+    - Moved methods hasZeroRoot and zeropart to UnivariatePolynomial.
+    - Derived from RealalgebraicUnivariatePolynomial and removed superfluous methods maximumNorm, cauchyBound + moved standardSturmSequence and signVariations to super class.
+  * UnivariatePolynomial.*: - Added method hasZeroRoot and zeropart.
+    - Made one-line methods inline.
+    - Refactoring: lowercased selector names.
+  * operators.cpp: Fixed arithmetic operators involving RealAlgebraicNumberIR and numeric by adding refinements.
+  * RealalgebraicUnivariatePolynomial_unittest.cpp: - Added tests for evaluateAt.
+    - Added some tests for sgn.
+  * CAD.*: Refactoring: lowercased selector names.
+  * Constraint.*: Refactoring: lowercased selector names.
+  * OpenInterval.*: Refactoring: lowercased selector names.
+2011-01-12 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * RealAlgebraicNumberFactory_unittest.cpp: Added some non-trivial tests to testRealRoots.
+  * RealalgebraicUnivariatePolynomial.*: Removed input-check flag and replaced it by automatic decision.
+  * RealAlgebraicNumberFactory.*: Changed all methods working on RationalUnivariatePolynomial to RealalgebraicUnivariatePolynomial.
+  * CAD.*: Changed all methods working on RationalUnivariatePolynomial to RealalgebraicUnivariatePolynomial.
+  * examples/example_CAD_*.cpp: Adapted to changes in CAD.
+  * OpenInterval.cpp, UnivariatePolynomial.h, RealAlgebraicNumberIR.cpp, RealAlgebraicNumberFactory.h: Documentation fixes due to doxygen warnings.
+  * OpenInterval.*: Added operation to divide two intervals.
+  * operators.*: - Added operators for dividing intervals with intervals or numerics.
+    - Added mixed operators for division of RealAlgebraicNumberIR and numeric.
+    - Added operators for RealAlgebraicNumberPtr.
+  * CAD_unittest.cpp: Disabled unit tests (too slow).
+2011-01-14 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * All: Removed superfluous location info in invalid_argument exception texts.
+  * operators.*: - Slight fixes in some operators.
+    - Added operators for RealalgebraicUnivariatePolynomial.
+  * RealalgebraicUnivariatePolynomial.*: - Revised method rem.
+    - Introduced preprocessor directives for handling RealAlgebraicNumberPtr conversions in normalize.
+  * UnivariatePolynomial.*: Added variants of normalize and normalizeCoefficient from RealalgebraicUnivariatePolynomial in order for the correct functioning of mehtods rem, ....
+2011-01-17 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * UnivariatePolynomial.*: Re-implemented subresultant algorithm completely from scratch following Ducos.
+  * RealalgebraicUnivariatePolynomial.*: Removed subresultant algorithm for the univariate case works good.
+  * RealalgebraicUnivariatePolynomial_unittest.*: Removed superfluous tests: hasZeroRoot, nonZeroPart.
+  * Polynomial.cpp: Relaxed is-polynomial check to allow RealAlgebraicNumber.
+2011-01-18 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * UnivariatePolynomial.*: Added normalization to constructor depending on a flag, set to true by default.
+  * src/tools/CMakeLists.txt: Added.
+  * src/test/CMakeLists.txt: Fixed (added libdir).
+  * {,src/}CMakeLists.txt: Revised + added some tests (readline) and targets (uninstall, check).
+2011-01-19 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * operators.cpp: Fixed operator/ for mixed RealAlgebraicNumberIR and numeric.
+  * src/.../CMakeLists.txt: Several fixes.
+  * All: Removed autotools build system.
+  * RealAlgebraicNumberFactory_unittest.*: Removed countRealRoots test (moved to RealalgebraicUnivariatePolynomial_unittest).
+  * RealalgebraicUnivariatePolynomial_unittest.*: - Added test for rem.
+    - Added countRealRoots test.
+  * CAD_unittest.*, Constraint_unittest.*: Reactivated some unittests with acceptable runtime.
+2011-01-19 Sebastian Junges <sebastian.junges@rwth-aachen.de>
+  * MR-Branch: Groebner class extended.
+2011-01-20 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * UnivariatePolynomial.cpp: Added mask for implementation of Lazard's and Ducos' subresultant optimization.
+  * CAD.*: Added methods to extend the set of polynomials and eliminationSets (by now, only incremental for univariate polynomials).
+  * CAD_unittest.*: Added test for addPolynomials.
+  * UnivariatePolynomialSet.h: Added constructor adding a range of elements in advance.
+2011-01-20 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * example1.cpp: Adapted to the current framework.
+  * example2.cpp: Adapted to the current framework.
+  * example3.cpp: Adapted to the current framework.
+  * example5.cpp: Removed example5 because it not applicable to the new structure (and does not makes sense anymore)
+  * example6.cpp: Removed example6 because it not applicable to the new structure (and does not makes sense anymore)
+  * example_liftingphase.cpp: Removed example_liftingphase because it not applicable to the new structure (and does not makes sense anymore)
+  * example7.cpp: Removed example7 because it does not reflect a general feature and was primarily used for testing
+  * CMakeLists.txt: Changed release typ to "relase" which adds (e.g. -O3)
+2011-01-21 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * CAD.h: Added copy constructor.
+2011-01-25 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * CAD.h: Added methods next and pop to SampleList. next returns the next sample in the order of insertion while NRs are preferred, pop removes the element provided by next.
+  * Groebner.cpp: Cleaned debug output.
+  * examples/example_CAD_5.cpp: Added. Example of a purely strict inequality system.
+2011-01-26 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * UnivariatePolynomial.*: - Added two more strict polynomial orderings, one preferring lower degrees and the other odd degrees.
+    - Added method subresultantCoefficients.
+  * CAD.*: - Changed liftCheck to use IRs only when absolutely necessary.
+    - Added heuristics to SampleList::{insert,next} in order for gaining NRs in more cases.
+    - Added method SampleList::simplify in order for gaining more NRs for IRs in one go.
+    - Added heuristics to exploit NR samples at several positions in CAD::liftCheck.
+    - Configured CAD constructor to use a degree-based ordering on the elimination polynomials.
+  * RealAlgebraicNumberIR.*: - Added framework for different refinement strategies.
+  * examples: Added some output.
+  * RealAlgebraicNumberFactory.h: Switched standard strategy for searchRealRoots to binary sample based splitting.
+  * UnivariatePolynomial_unittest.*: Added a test case for UnivariatePolynomial::subresultants.
+2011-01-27 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * CAD.cpp: Added Hong's projection operator (still in comments).
+  * UnivariatePolynomial.cpp: Fixes in subresultants and subresultantCoefficients for cases of constant input.
+2011-01-28 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * All: Reformated with jIndent.
+2011-01-28 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * ginacraconsole.cpp: Replace rl_abort with rl_insert because rl_abort is compiler dependent. (source follows ...)
+  * RealalgebraicUnivariatePolynomial.cpp: Removed illegal 'typename'.
+2011-01-30 Joachim Redies <joachim.redies@rwth-aachen.de>
+  * CAD.cpp: Fixed issues with 0,..,-1 indices in eliminationSets.
+  * CAD.cpp: eliminationSets is know using Hong's operator.
+2011-02-01 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * examples/: Renamed some examples.
+  * examples/benchmark_Groebner_1.cpp: Added. Implements some example sets which can be tested against Singular and Reduce.
+  * ginacraconsole.*: Added cad command for computing a CAD.
+2011-02-06 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * OpenInterval.cpp, utilites.cpp, RealAlgebraicNumberIR.cpp, ...: Fixed doxygen warnings.
+  * doxygen-conf/CMakeLists.txt: - Removed usage of perl file for pdf documentation.
+    - Added one target including html doc and optional pdf doc built automatically.
+  * ginacra.h: Added mainpage to documentation.
+  * CMakeLists.txt: Several fixes regarding pkg-config, doxygen and CPack.
+  * ginacra.h: Added @mainpage to documentation including a small abstract of the project.
+  * tree.h: Removed \mainpage from documentation.
+  * Released 0.5.0.
+
+2011-02-09 Sebastian Junges <sebastian.junges@rwth-aachen.de>
+  * Added ability for Groebner to detect whether it has been reduced (this comes at constant extra costs at the init phase)
+
+2011-02-22 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * Smaller fixes.
+  * Released 0.5.1.
+
+2011-03-12 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * RealalgebraicUnivariatePolynomial.cpp: Fixed rem algorithm.
+  * UnivariatePolynomial.{h,cpp},operators.{h,cpp}: Disabled rem algorithm.
+2011-03-13 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * UnivariatePolynomial.h: Changed empty-constructor polynomial to zero.
+  * RealalgebraicUnivariatePolynomial.*: Enhanced rem algorithm to compute the quotient as well (accessible by quo).
+2011-03-14 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * operators.cpp: Re-enabled operators for univariate polynomials.
+  * UnivariatePolynomial.*: - Revised standardSturmSequence to use more efficient GiNaC terms.
+    - Removed support for real-algebraic coefficients where appropriate.
+  * RealalgebraicUnivariatePolynomial.*: Switched to non-explicit representation of real-algebraic coefficients:
+    - Removed special arithmetic operations incl. standardSturmSequence.
+  * RationalUnivariatePolynomial.*: Derived from UnivariatePolynomial only and removed specialized methods where possible.
+2011-03-15 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * RealalgebraicUnivariatePolynomial{,_unittest}.*: Removed.
+  * RationalUnivariatePolynomial.*: Enhanced by the former methods of RealalgebraicUnivariatePolynomial.
+  * RealAlgebraicNumberFactory.*: - Replaced all usages of RealalgebraicUnivariatePolynomial by RationalUnivariatePolynomial.
+    - Re-implemented evaluateIR by using resultant computations; method now performs complete evaluation in one go.
+    - Implemented realRoots for parameterized UnivariatePolynomials by using resultant computations and evaluating the coefficients according to a variable-RealAlgebraicNumberPtr map.
+  * OpenInterval.*: - Added method evaluate to evaluate a given polynomial with the given intervals.
+    - Removed unclean using std statement.
+  * OpenInterval_unittest.*: Added OpenInterval::evaluate test.
+  * Constraint.cpp: Fixed satisfiedBy in order for the correct usage of the new RealAlgebraicNumberFactory::evaluateIR.
+  * CAD.cpp: Fixed samples in order for the correct usage of the new RealAlgebraicNumberFactory::realRootsEval.
+  * RealAlgebraicNumber{N,I}R[_unittest].*: Replaced all usages of RealalgebraicUnivariatePolynomial by RationalUnivariatePolynomial.
+  * RealAlgebraicNumberFactory_unittest.*: Replaced all usages of RealalgebraicUnivariatePolynomial by RationalUnivariatePolynomial.
+  * operators.*: Replaced all usages of RealalgebraicUnivariatePolynomial by RationalUnivariatePolynomial.
+  * [Rational]UnivariatePolynomial.*: Replaced all usages of RealalgebraicUnivariatePolynomial by RationalUnivariatePolynomial.
+2011-03-16 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * OpenInterval.cpp: - Bugfixes in evaluate (evaluation order and trivial cases).
+  * RealAlgebraicNumberFactory.cpp: - Bugfix in evaluateIR (variable mapping for interval construction).
+  * RealAlgebraicNumberFactory_unittest.cpp: Removed realRoots test case for polynomial with real algebraic coefficients.
+2011-03-19 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * UnivariatePolynomial.*: - Cleaning: removed normalization and respective attributes.
+    - Re-implemented nonzeropart as constructive linear algorithm.
+  * settings.h: - Renamed class Settings to MultivariatePolynomaiSettings.
+    - Introduced class RealAlgebraicNumberSettings.
+    - Added type for CAD settings.
+  * RealAlgebraicNumberIR.*: - Inlined refine( eps ).
+    - Used sepapart as standard simplification for defining polynomials in constructors.
+  * CAD.*: - Added struct defining CAD settings, changed constructors accordingly.
+2011-03-20 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * utilites.*: Added functions gcd, numerator and denominator operating on long.
+  * utilities_unitest.*: Added tests comparing new gcd, numerator and denominator methods with GiNaC's.
+  * examples/*_CAD_*.cpp: Changed CAD initialization to match the new constructor.
+  * OpenInterval.cpp: Improved sample() which now uses machine integer arithmetic in the core search algorithm whenever possible.
+  * CAD.*: - SampleList::next changed to try simplify if no NRs are available before choosing the IRs.
+    - Added flag CADSettings::preferNRSamples.
+    - Improved liftCheck to not use additional control structures for the sample choice heuristics, which are now controlled by CADSettings::preferNRSamples.
+2011-03-21 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * UnivariatePolynomial_unittest.cpp: Removed some memory leaks.
+  * CAD.cpp: - Replaced level-wise mSampleLists by level- and liftingPosition-wise mSampleListsPerLifting.
+    - Fixes in method addPolynomials so that now additional variables are considered as well.
+    - Implemented addPolynomial by using addPolynomials.
+    - Added some CADSettings.
+  * settings.h: Added some CADSettings.
+2011-03-22 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * settings.h, CAD.h: Added CADSettings for the use of Gröbner bases. Made CADSettings combinable by using powers of 2 for the flag values.
+  * example/example_CAD_9: Added for the purpose of testing different cad settings.
+  * UnivariatePolynomial.*: Added two new orderings.
+2011-03-23 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * RationalUnivariatePolynomial.*: Added method countRealRoots just operating on the current object (using the Cauchy bound for the isolating interval).
+  * settings.h: Added REALROOTCOUNT_CADSETTING.
+  * CAD.*: Added setting for base-level real-root-count pruning.
+2011-03-24 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * CAD.cpp: - Implemented real-root-count pruning for elimination base level.
+    - Cleaned some superfluous instructions and comments from eliminationSets.
+    - Fixed some mistakenly pre-check for subresultants.
+    - Implemented Hong's projection operator.
+    - Implemented square-free part simplification setting.
+2011-03-25 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * All: Slight change in GPL preamble.
+2011-03-26 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * CAD.*: - Added optional setting argument to addPolynomial.
+2011-03-27 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * Released 0.6.0.
+
+2011-04-03 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * CAD.h: Fixes in addPolynomials: eliminationSets do now contain the previously computed polynomials.
+  * examples/example_CADincremental1.cpp: Extended to test adding also new variables.
+2011-04-10 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * RationalUnivariatePolynomial.cpp: More comprehensive exception texts.
+  * UnivariatePolynomial.h: Added method inVariable switching the main variable of a univariate polynomial.
+  * RealAlgebraicNumberFactory.cpp: Changed evaluateIR to use UnivariatePolynomial::subresultants instead of GiNaC::resultant.
+2011-04-14 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * RealAlgebraicNumberFactory.*: - Moved isolation strategy settings to settings.h.
+    - Removed method approximate and its auxiliary methods for it is replaced by GiNaC::fsolve.
+    - Added fsolve heuristics to realRoots methods.
+  * settings.h: - Moved settings for real root isolation from RealAlgebraicNumberFactory to here.
+    - Added refinement strategy for the application of Newton's method.
+  * utilites.*: - Added method rationalize which converts floating point numerics into rationals.
+    - Added method rationalize which converts a rational polynomial GiNaC expression one with exact rational numeric coefficients.
+2011-04-15 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * RealAlgebraicNumberFactory.cpp: - Slight improvements in searchRealRoots.
+    - Fixed bug in real root algorithms in which numeric roots where not marked as such.
+    - Added refinement setting argument to realRoots and realRootsEval.
+  * RealAlgebraicNumberNR.cpp: Switched standard setting of isRoot to true in constructors.
+  * RealAlgebraicNumberIR.*: - Improved refineAvoiding so that now numeric roots are detected.
+    - Changed refineAvoiding so that the interval bounds avoid the given numeric as well.
+      This fixes a bug in static CAD::samples method in which interval bounds were wrongly chosen as samples if they coincided with their exact numeric neighbor root.
+  * RationalUnivariatePolynomial.*: - Added rudimentary Newton method in approximateRealRoot.
+    - Re-implemented method evaluateAt by using Horner's method.
+  * OpenInterval.*: Added method meets, which tests for weak containment (including the interval bounds).
+2011-04-16 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * CAD.*: Changed CAD interface. It is now wider and compatible with the very first version.
+2011-04-17 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * Constraint.*: Small fix in satisfiedBy so that now also larger RealAlgebraicPoints are accepted.
+2011-04-18 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * RealAlgebraicNumberFactory.cpp: Removed assertion in evaluateIR.
+  * CAD.cpp: - Revised truncation.
+    - Slight improvements in the loop structure in eliminationSet.
+  * UnivariatePolynomialSet.cpp: - Fixed removeConstants to not remove constants containing variables.
+    - Fixed divideByLcoeff to not divide by parametric lcoeffs.
+    - Slight improvements to removeConstants and divideByLcoeff.
+2011-04-20 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * CMakeLists.txt: Switched make flags to -std=gnu++0x.
+  * {Groebner,MultivariatePolynomialMR}.cpp: Compatibility changes regarding the compiler flags setting.
+  * UnivariatePolynomial_unittest.cpp: Enhanced testSubresultants and switched the testing to the method UnivariatePolynomial::subresultants.
+  * UnivariatePolynomial.cpp: - Traced comparison functions back to univariatePolynomialIsLess, which is now explicitly excluding equal polynomials.
+  * CAD.*: - Fixed initialization of VariableListPool for possible Groebner setting alternation.
+    - Fixed simplification (application of std::unique) due to mSimplifyBySquarefreeing in constructor and addPolynomials.
+  * UnivariatePolynomialSet.*: Switched internal data structure to unordered_set, for orderings in CAD are applied to vectors only.
+2011-04-21 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * UnivariatePolynomialSet.cpp: - Fixed removeConstants.
+  * CAD.*: Changed mLiftingPositions to contain stacks with lifting positions still unconsidered instead of just the next lifting position.
+2011-04-23 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * CAD.h: Fixed bug in SampleList::insert which caused the IR buckets to be not cleared correctly after replacing an IR with an NR.
+2011-04-24 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * settings.h: Added SIMPLE_ISOLATIONSTRATEGY.
+  * RealAlgebraicNumberFactory.cpp: Added implementation for SIMPLE_ISOLATIONSTRATEGY.
+  * CAD.*: Implemented isolation strategy choice by strategy.
+2011-04-26 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * RealAlgebraicNumber{,IR,NR}.*: Shifted method isNumeric from IR to the super class.
+  * CAD.*: Added several methods in SampleList in order to operate root/non-root heuristics. First implementation in liftCheck, but not testet properly.
+2011-04-27 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * OpenInterval.h: Added method sampleFast which returns sample() if the bounds permit machine computations, and midpoint() otherwise.
+  * CAD.*: - Implemented operator<< in CADSettings.
+    - Made the bool attributes of CADSettings protected and added corresponding selectors (important to keep some dependencies between the flag settings correct).
+    - Used method OpenInterval::sampleFast to determine the points between two roots.
+    - Fixes in addPolynomials to reset liftingPositions correctly.
+    - Fixed index for level-wise sample lists; it is now depending on the level and the sample which lead to this lifting position.
+  * examples/example_CAD_*: Improved example structure in order to test different heuristics.
+  * constants.h: Added numeric ZERO representing a unique zero.
+  * Released 0.6.2.
+
+2011-04-28 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * CAD.*: - SampleList::simplify now returns the map of changes which were performed during simplification.
+  * RealAlgebraicNumberFactory.cpp: Added case for constant input polynomials in realRoots and realRootsEval.
+2011-04-30 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * CAD.*: - Added method SampleLis::contains checking whether a given real-algebraic number is contained in the list.
+    - Removed mSampleLists for it was obsolete and could lead to wrong root/non-root markings.
+2011-05-01 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * CAD.*: - Introduced sorted children lists for the sample tree by inserting new children sorted.
+    - Removed obsolete mSampleLists.
+2011-05-02 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * RealAlgebraicNumber{,IR,NR}.*: Shifted method value() and the attribute mValue from IR to the super class, fixing a problem in CAD::samples.
+  * CAD.cpp: Fixed segfault in samples().
+2011-05-04 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * CAD.cpp: - Fixed bug in liftCheck which caused duplicate sample points to occur.
+2011-05-05 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * OpenInterval.*: - Added method abs computing the absolute value interval.
+    - Fixed uncatched overflow_error in div so that it is now compatible with open intervals not being zero.
+  * RealAlgebraicNumberFactory.cpp: Fixed interval construction in realRootsEval now being composed of an over-approximated Cauchy bound.
+  * RealAlgebraicNumberFactory_unittest.*: - Added test for realRootsEval.
+    - Cleaned up obsolete test for approximate.
+2011-05-06 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * CAD.*: Removed obsolete mSampleListsPerLifting.
+  * UnivariatePolynomial.h: Switched resultant computation to use GiNaC::resultant, which is currently more efficient.
+  * Released 0.6.3.
+
+2011-05-07 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * RealAlgebraicNumberIR.*: - Removed attribute mOrder for it was used nowhere.
+    - Removed implementation of constructors by introducing one constructor and delegating the others.
+    - Added heuristics determining the mValue if the polynomial is linear.
+  * RealAlgebraicNumberFactory.*, RealAlgebraicNumberIR_unittest.*: Changed according to the above-mentioned changes.
+  * CAD.h: Fixed SampleList::emptyNonroot(), SampleList::emptyRoot().
+2011-05-08 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * UnivariatePolynomial.*: - Added method principalSubresultantCoefficients.
+    - Simplified method subresultants.
+2011-05-10 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * OpenInterval.*: Replaced setBounds by methods setLeft/setRight.
+  * RealAlgebraicNumberIR.cpp: - refineAvoiding
+    - Improvements to is_equal_same_type.
+2011-05-13 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * CAD.cpp: Removed divideByLcoeff() call in eliminationSet for it seems to break the elimination sets sometimes.
+  * OpenInterval_unittest.cpp: Added some test cases for sample().
+2011-05-14 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * utilities.*: Added method lcm working on long.
+  * OpenInterval.cpp: - Fixed sample() and sampleFast() to not use denominators of the interval distance any more for they lead to wrong denominator constructions.
+    - Slight improvements to sample() and sampleFast() initializing gcdK with 1.
+    - Restricted the sample computation to bounds not larger than MAX_FASTSAMPLE_BOUND.
+  * settings.h: Defined MAX_FASTSAMPLE_BOUND to be SHRT_MAX.
+  * CAD.*: - Added SampleList::remove for safely deleting a number at a given position.
+    - Fixes in SampleList::simplify s.t. now only non-NR samples are replaced by NRs.
+    - Fixes in CAD::samples() so that currentSamples is maintained correctly in case it is empty.
+    - Fixes in CAD::samples() so that currentSamples and newSampleSet are now extended by SampleList::insert, not push_back.
+2011-05-15 Ulrich Loup <loup@cs.rwth-aachen.de>
+  * CAD.*: - Fixes in CAD::liftCheck so that now the currentSamples of each level are not deleted before new samples are constructed and possible simplifications in sampleIncrements are propagated into currentSamples.
+    - Moved elimination parts into the respective paired and non-paired elimination methods.
+    - Fixes in addPolynomial in the construction of liftingPositions.
+  * RealAlgebraicNumberIR.cpp: - Improved detection of numeric values for linear polynomials.
+    - Added case for numerically represented numbers to the constructor, refine() and refineAvoiding().
+  * RealAlgebraicNumberFactory.cpp: - Changed equal and isLess to use the method value() for accessing numeric values, what avoids casts.
+  * UnivariatePolynomial.*: - Removed divideByLcoeff.
+    - Added methods content and primpart depending on content.
+  * UnivariatePolynomial_unittest.*: Removed tests for divideByLcoeff.
+  * UnivariatePolynomialSet.*: Removed divideByLcoeff method and added makePrimitive instead.
+2011-05-19 Ulrich Loup <loup@cs.rwth-aachen.de>  
+  * examples/example_CAD_{B,C}.cpp: Added.
+  * Released 0.6.4.

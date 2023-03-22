@@ -1,0 +1,65 @@
+File: README
+
+Project name: GiNaCRA - GiNaC Real Algebra package
+Contact: Ulrich Loup <loup@cs.rwth-aachen.de>
+Project sourceforge page: http://ginacra.sourceforge.net/
+Development status: beta (testing + some features missing)
+
+* Prerequisites
+    - The build system CMake (only for building from source): http://www.cmake.org/
+    - The library CLN: http://www.ginac.de/CLN/
+    - The library GiNaC: http://www.ginac.de/
+
+
+* Optional dependencies
+    - The test suite CppUnit: http://cppunit.sourceforge.net/
+    - The console feature library Readline: http://www.gnu.org/s/readline/
+    - The documentation build system Doxygen: http://www.stack.nl/~dimitri/doxygen/ 
+
+
+* How to build the project including library, tool src/tools/ginacraconsole and the test suites "src/tests/check_ginacra"
+
+mkdir build         // Create a separate build directory.
+cd build
+cmake .             // Configure using cmake. Use "ccmake .." in order for an interactive user interface with more options.
+make                // Build the project, in particular, build the library, the tests src/test/check_ginacra and the tools src/tools/ginacraconsole.
+
+
+* How to run the tests
+
+make check          // If necessary, builds src/test/check_ginacra in advance.
+
+
+* Other targets to make
+
+make help           // Show a list of possible targets including the below listed.
+make clean          // Force the build system to re-build everything.
+make install        // Install library to the specified (adjust via ccmake) system directory.
+make package        // Construct a package of the project.
+make uninstall      // Remove all installed files from the system.
+make lib_ginacra    // Build the project library.
+make check_ginacra  // Build the project test.
+make examples       // Build some examples in the folder examples/.
+make ginacraconsole // Build the project tool ginacraconsole.
+make doc            // Build the project documentation (html + pdf, if pdflatex is available).
+make package        // Build the binary package
+make package_source // Build the source package (before, you should make clean)
+
+
+* How to build the documentation
+
+Required: Doxygen: http://www.stack.nl/~dimitri/doxygen/
+
+make doc
+
+
+* Troubleshooting
+
+  - If building the project via make fails, especially when linking with libginacra.so, one reason could be your -j setting. Try make -j1 instead.
+    (This is of course only a workaround. We will fix the dependencies in CMakeLists.txt as soon we find out how.)
+
+  - I have GiNaC installed but GiNaCRA does not find it!
+      . Is pkg-config set up correctly? There must be a file named "ginac.pc" in the subfolder "pkgconfig/" of the library path to GiNaC's libraries.
+      . Optional: Do LD_LIBRARY_PATH and /etc/ld.so.conf contain the path to the GiNaC libraries?
+  
+  This list can grow - by your help! Just contact one of the authors.
